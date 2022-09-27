@@ -7,7 +7,7 @@
         beStrictAboutOutputDuringTests="true"
 >
   <testsuites>
-    <testsuite name="VendorName Test Suite">
+    <testsuite name="Test Suite">
       <directory>tests</directory>
     </testsuite>
   </testsuites>
@@ -25,9 +25,15 @@
     <junit outputFile="build/report.junit.xml"/>
   </logging>
   <php>
+    <env name="APP_ENV" value="testing"/>
     <env name="APP_KEY" value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
-    <env name="EMULADOR_CLAVEUNICA_ENABLED" value="true"/>
-    <env name="EMULADOR_CLAVEUNICA_CLIENT_ID" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
-    <env name="EMULADOR_CLAVEUNICA_CLIENT_SECRET" value="zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"/>
+    <env name="BCRYPT_ROUNDS" value="4"/>
+    <env name="CACHE_DRIVER" value="array"/>
+    <env name="DB_CONNECTION" value="sqlite"/>
+    <env name="DB_DATABASE" value=":memory:"/>
+    <env name="MAIL_MAILER" value="array"/>
+    <env name="QUEUE_CONNECTION" value="sync"/>
+    <env name="SESSION_DRIVER" value="array"/>
+    <env name="TELESCOPE_ENABLED" value="false"/>
   </php>
 </phpunit>
