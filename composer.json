@@ -4,7 +4,7 @@
     "description": "Laravel library boilerplate",
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": "8.0.*|8.1.*",
         "ext-json": "*",
         "illuminate/contracts": "^9.0"
     },
