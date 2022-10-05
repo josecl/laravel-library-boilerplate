@@ -1,6 +1,6 @@
-name: tests
+name: Tests
 
-on: ['push']
+on: ['push', 'pull_request']
 
 jobs:
   test:
@@ -16,18 +16,18 @@ jobs:
           - laravel: 9.*
             testbench: 7.*
 
-    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - P${{ matrix.php }} - ${{ matrix.os }}
+    name: PHP ${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.stability }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: curl, mbstring, zip, pcntl, bcmath, intl
-          coverage: none
+          extensions: curl, mbstring, zip, pcntl, intl
+          coverage: pcov
 
       - name: Install dependencies
         run: |
@@ -35,4 +35,6 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
-        run: vendor/bin/pest
+        run: |
+          vendor/bin/pest
+          head build/coverage.txt
