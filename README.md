@@ -3,7 +3,7 @@
 ## Requerimientos
 
 - Laravel 9
-- php 8.0
+- php 8.0 | 8.1
 
 ## Features
 
