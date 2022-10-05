@@ -11,5 +11,11 @@ parameters:
     checkOctaneCompatibility: true
     checkMissingIterableValueType: false
 
-    #ignoreErrors:
-    #    - '#Call to an undefined method Faker\\Generator::#'
+    ignoreErrors:
+        - message: '#undefined .* Pest\\.*#'
+          paths:
+              - tests/
+
+        - message: '#Undefined variable: \$this#'
+          paths:
+              - tests/
